@@ -3,7 +3,7 @@ const Todo = require('../models/todoModel');
 exports.getAllTodos = async (req, res) => {
   try {
     const todos = await Todo.getAll();
-    res.json(todos);
+    res.status(200).json(todos);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -15,7 +15,7 @@ exports.getTodoById = async (req, res) => {
     if (!todo) {
       return res.status(404).json({ error: 'Todo not found' });
     }
-    res.json(todo);
+    res.status(200).json(todo);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -41,7 +41,7 @@ exports.updateTodo = async (req, res) => {
     if (!updatedTodo) {
       return res.status(404).json({ error: 'Todo not found' });
     }
-    res.json(updatedTodo);
+    res.status(200).json(updatedTodo);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -53,7 +53,7 @@ exports.deleteTodo = async (req, res) => {
     if (!deletedTodo) {
       return res.status(404).json({ error: 'Todo not found' });
     }
-    res.json(deletedTodo);
+    res.status(200).json(deletedTodo);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
